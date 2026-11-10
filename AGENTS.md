@@ -27,7 +27,7 @@
 
 ## 資料夾結構
 ```
-友誼維繫/                  ← 獨立 git repo（公開）
+友誼維繫/                  ← 獨立 git repo（公開）https://github.com/rayilin/friendship-bonds
 ├── AGENTS.md                     專案藍圖（本檔）
 ├── handoff.md                    交接檔
 ├── .github/workflows/pages.yml   GitHub Pages 部署
@@ -70,7 +70,7 @@ powershell -File <skill>\scripts\docx_to_pdf.ps1 -Docx "教案\X.docx"
 | 層級 | 平台 | 位置 | 讀取時機 |
 |------|------|------|---------|
 | L1 | 本地 | `AGENTS.md`＋`handoff.md` | 每個 session |
-| L2 | GitHub | repo（公開） | 指定時 |
+| L2 | GitHub | repo（公開）https://github.com/rayilin/friendship-bonds | 指定時 |
 | L3 | Obsidian | `友誼維繫/專案工作流程.md` | 有需要時 |
 
 ## 已上線網址
@@ -90,3 +90,10 @@ powershell -File <skill>\scripts\docx_to_pdf.ps1 -Docx "教案\X.docx"
 - **學生資料只用座號**，不出現姓名、學號、班級以外的個資、照片或聯絡方式
 - `questions.json`（對戰答案）**不得**部署到公開網站（Pages 與 Render 都要 404）
 - 要公開分享前，先確認檔案裡沒有上述內容
+
+## 上線資訊
+- GitHub Pages：https://rayilin.github.io/friendship-bonds/
+- Repo：https://github.com/rayilin/friendship-bonds（公開，分支 main）
+- 首次部署：run 42780218036（success）
+- 本機驗收：verify_site.js 36/36 全過、console 0 error
+- 對戰答案檔 questions.json／server.js／start-battle.bat 未上公開網站（.gitignore 排除）
