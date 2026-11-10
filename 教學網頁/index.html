@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>友誼維繫｜康軒版六上健體・教學專欄</title>
+<style>
+  :root{
+    --ink:#1F1F1F; --sub:#5A5A5A; --muted:#8A857B;
+    --cream:#F7F5F0; --paper:#FFFFFF; --line:#E2DCCF;
+    --dark:#121212; --dark2:#1C1C1C; --darkInk:#F2F0EA;
+    --accent:#E8601A; --accent2:#FF7A1A;
+    --green:#3F8F4A; --greenSoft:#EAF5E8;
+    --teal:#0E7C7B; --blue:#2C7FB8; --gold:#B8860B;
+    --r:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"GenSekiGothic2 TW M","GenSekiGothic2 TW H","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{line-height:1.25; margin:0; font-weight:700}
+  p{margin:0 0 12px}
+  a{color:inherit}
+  button{font-family:inherit; cursor:pointer}
+  .wrap{width:min(1180px,92vw); margin:0 auto}
+
+  /* ── nav ── */
+  .nav{
+    position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
+    background:rgba(247,245,240,.88); border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex; align-items:center; gap:18px; height:64px}
+  .brand{font-weight:700; font-size:17px; white-space:nowrap; letter-spacing:.02em}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex; gap:4px; margin-left:auto; overflow-x:auto; scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{
+    padding:8px 13px; border-radius:999px; text-decoration:none; font-size:14.5px;
+    color:var(--sub); white-space:nowrap; transition:.2s;
+  }
+  .nav-links a:hover{background:#EDE8DE; color:var(--ink)}
+  .nav-links a.on{background:var(--dark); color:var(--darkInk)}
+
+  /* ── hero ── */
+  .hero{background:var(--dark); color:var(--darkInk); padding:72px 0 64px; position:relative; overflow:hidden}
+  .hero::after{
+    content:""; position:absolute; right:-140px; top:-120px; width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, rgba(255,122,26,.30), transparent 62%);
+  }
+  .hero .wrap{position:relative; z-index:1}
+  .eyebrow{font-size:13.5px; letter-spacing:.22em; color:var(--accent2); font-weight:700; margin-bottom:14px}
+  .hero h1{font-size:clamp(38px,6vw,72px); letter-spacing:.01em}
+  .hero p.lead{color:#B9B4A9; font-size:clamp(16px,2vw,20px); max-width:760px; margin-top:18px}
+  .chips{display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 34px}
+  .chip{border:1.5px solid #3A3A3A; border-radius:999px; padding:7px 15px; font-size:14px; color:#D8D3C7}
+  .chip.g{border-color:var(--green)} .chip.o{border-color:var(--accent2)}
+  .cta{display:flex; flex-wrap:wrap; gap:12px}
+  .btn{
+    border:none; border-radius:12px; padding:13px 22px; font-size:15.5px; font-weight:700;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:.2s;
+  }
+  .btn.primary{background:var(--accent); color:#fff}
+  .btn.primary:hover{background:#D4530F}
+  .btn.ghost{background:transparent; color:var(--darkInk); border:1.5px solid #454545}
+  .btn.ghost:hover{border-color:var(--accent2); color:var(--accent2)}
+  .btn.dark{background:var(--dark); color:var(--darkInk)}
+  .btn.small{padding:9px 15px; font-size:14px}
+  .btn:disabled{opacity:.45; cursor:not-allowed}
+
+  /* ── sections ── */
+  section{padding:74px 0; scroll-margin-top:78px}
+  .sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:30px; flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(26px,3.6vw,38px)}
+  .sec-head .kicker{color:var(--accent); font-size:13px; letter-spacing:.2em; font-weight:700; margin-bottom:8px}
+  .sec-head p{color:var(--sub); margin:8px 0 0; max-width:640px}
+  .dark-sec{background:var(--dark); color:var(--darkInk)}
+  .dark-sec .sec-head p{color:#A8A399}
+  .dark-sec .sec-head .kicker{color:var(--accent2)}
+
+  /* ── lesson plan ── */
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .info-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:24px}
+  .info-card h3{font-size:19px; margin-bottom:10px}
+  .info-card .num{display:inline-grid; place-items:center; width:30px; height:30px; border-radius:50%;
+    background:var(--dark); color:#fff; font-size:14px; margin-right:8px}
+  .kv{display:grid; grid-template-columns:110px 1fr; gap:4px 14px; font-size:15px}
+  .kv dt{color:var(--muted)} .kv dd{margin:0}
+  details.acc{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); margin-bottom:12px; overflow:hidden}
+  details.acc summary{
+    list-style:none; cursor:pointer; padding:18px 22px; font-weight:700; font-size:17px;
+    display:flex; align-items:center; gap:12px;
+  }
+  details.acc summary::-webkit-details-marker{display:none}
+  details.acc summary::after{content:"＋"; margin-left:auto; color:var(--accent); font-size:20px; font-weight:400}
+  details.acc[open] summary::after{content:"－"}
+  details.acc .body{padding:0 22px 22px; color:var(--sub); font-size:15px}
+  details.acc .body strong{color:var(--ink)}
+  table{width:100%; border-collapse:collapse; font-size:14.5px}
+  .tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px}
+  th,td{padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left}
+  th{background:#EFEAE0; font-size:13.5px; color:var(--ink); white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.time{white-space:nowrap; font-weight:700; color:var(--teal)}
+  .tag{display:inline-block; padding:2px 9px; border-radius:999px; font-size:12.5px; font-weight:700}
+  .tag.g{background:var(--greenSoft); color:#2F5D2A}
+  .tag.o{background:#FFF0E6; color:#B34A0D}
+  ul.clean{margin:0; padding-left:1.2em}
+  ul.clean li{margin:6px 0}
+
+  /* ── slides ── */
+  .deck-shell{background:var(--dark); border-radius:24px; padding:18px; box-shadow:0 30px 60px rgba(0,0,0,.18)}
+  .stage{position:relative; aspect-ratio:16/9; background:#000; border-radius:14px; overflow:hidden}
+  .stage img,.stage video{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000}
+  .stage video{display:none}
+  .stage.has-video video{display:block}
+  .stage.has-video img{display:none}
+  .badge-sound{position:absolute; top:14px; right:14px; z-index:2; background:var(--accent); color:#fff;
+    font-size:12.5px; font-weight:700; padding:5px 11px; border-radius:999px; display:none}
+  .stage.has-video .badge-sound{display:block}
+  .deck-bar{display:flex; align-items:center; gap:12px; padding:14px 4px 4px; color:#D8D3C7; font-size:14px}
+  .deck-bar .spacer{margin-left:auto}
+  .icon-btn{background:#242424; color:#D8D3C7; border:1px solid #333; width:40px; height:40px; border-radius:10px;
+    display:grid; place-items:center; font-size:17px; transition:.2s}
+  .icon-btn:hover:not(:disabled){border-color:var(--accent2); color:var(--accent2)}
+  .icon-btn:disabled{opacity:.3; cursor:not-allowed}
+  .counter{font-variant-numeric:tabular-nums; letter-spacing:.06em}
+  .thumbs{display:flex; gap:8px; overflow-x:auto; padding:10px 2px 2px; scrollbar-width:thin}
+  .thumbs button{flex:none; width:112px; border:2px solid transparent; border-radius:8px; padding:0; background:none; opacity:.55; transition:.2s}
+  .thumbs button img{width:100%; display:block; border-radius:6px}
+  .thumbs button:hover{opacity:.85}
+  .thumbs button.on{opacity:1; border-color:var(--accent2)}
+  .hint{color:#8A857B; font-size:13px; text-align:center; margin-top:10px}
+
+  /* ── quiz ── */
+  .quiz{background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:clamp(22px,4vw,40px)}
+  .q-top{display:flex; align-items:center; gap:14px; margin-bottom:20px}
+  .q-count{font-size:13px; letter-spacing:.16em; color:var(--accent); font-weight:700}
+  .q-score{margin-left:auto; font-size:14px; color:var(--muted)}
+  .bar{height:8px; background:#EDE8DE; border-radius:999px; overflow:hidden; margin-bottom:30px}
+  .bar > i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--green),var(--accent)); transition:width .35s}
+  .q-text{font-size:clamp(20px,2.6vw,27px); font-weight:700; margin-bottom:24px}
+  .opts{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .opt{
+    text-align:left; background:#FBFAF6; border:1.5px solid var(--line); border-radius:14px;
+    padding:15px 17px; font-size:16px; color:var(--ink); transition:.18s; display:flex; gap:12px; align-items:flex-start;
+  }
+  .opt .letter{flex:none; width:28px; height:28px; border-radius:8px; background:#EFEAE0; display:grid; place-items:center;
+    font-weight:700; font-size:14px; color:var(--sub)}
+  .opt:hover:not(:disabled){border-color:var(--accent); background:#FFF7F1}
+  .opt.correct{border-color:var(--green); background:var(--greenSoft)}
+  .opt.correct .letter{background:var(--green); color:#fff}
+  .opt.wrong{border-color:#C0392B; background:#FBEAE7}
+  .opt.wrong .letter{background:#C0392B; color:#fff}
+  .opt:disabled{cursor:default}
+  .fb{margin-top:20px; border-radius:14px; padding:16px 18px; font-size:15px; display:none}
+  .fb.show{display:block; animation:pop .25s ease}
+  .fb.ok{background:var(--greenSoft); border-left:5px solid var(--green)}
+  .fb.no{background:#FBEAE7; border-left:5px solid #C0392B}
+  .fb b{display:block; margin-bottom:4px}
+  @keyframes pop{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+  .q-foot{display:flex; gap:12px; margin-top:22px; align-items:center}
+  .q-foot .spacer{margin-left:auto}
+  .result{text-align:center; padding:10px 0}
+  .result .big{font-size:clamp(48px,9vw,84px); font-weight:700; color:var(--accent); line-height:1}
+  .result .msg{font-size:20px; font-weight:700; margin:12px 0 4px}
+  .result .sub{color:var(--sub)}
+  .review{text-align:left; margin-top:26px; display:grid; gap:8px}
+  .review details{background:#FBFAF6; border:1px solid var(--line); border-radius:12px; padding:0 16px}
+  .review summary{cursor:pointer; padding:12px 0; font-size:14.5px; font-weight:700}
+  .review .rv{padding:0 0 14px; font-size:14px; color:var(--sub)}
+  .review .ok{color:var(--green); font-weight:700}
+  .review .no{color:#C0392B; font-weight:700}
+
+  /* ── videos ── */
+  .video-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px}
+  .vcard{background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden; text-decoration:none;
+    display:flex; flex-direction:column; transition:.2s}
+  .vcard:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.09)}
+  .vthumb{position:relative; aspect-ratio:16/9; background:linear-gradient(135deg,#2B2B2B,#121212); overflow:hidden}
+  .vthumb img{width:100%; height:100%; object-fit:cover; display:block}
+  .vthumb .play{position:absolute; inset:0; display:grid; place-items:center; color:#fff; font-size:36px;
+    background:rgba(0,0,0,.18); opacity:0; transition:.2s}
+  .vcard:hover .play{opacity:1}
+  .vthumb .src{position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.75); color:#fff; font-size:11.5px;
+    padding:3px 8px; border-radius:6px}
+  .vthumb .fallback{position:absolute; inset:0; display:grid; place-items:center; color:#fff; font-weight:700;
+    font-size:22px; letter-spacing:.14em; background:linear-gradient(135deg,#0E7C7B,#0A4F4E)}
+  .vbody{padding:15px 16px 18px}
+  .vbody h4{font-size:16px; margin-bottom:6px}
+  .vbody p{font-size:13.5px; color:var(--muted); margin:0}
+
+  /* ── tools ── */
+  .tools{display:grid; grid-template-columns:1.05fr .95fr; gap:20px}
+  .tool{background:var(--dark2); border:1px solid #2C2C2C; border-radius:24px; padding:clamp(20px,3vw,30px); color:var(--darkInk)}
+  .tool h3{font-size:21px; display:flex; align-items:center; gap:10px}
+  .tool h3 span{font-size:13px; color:#8A857B; font-weight:400}
+  .tool label{font-size:13px; color:#A8A399; display:block; margin:16px 0 6px}
+  .tool textarea,.tool input{
+    width:100%; background:#151515; border:1px solid #333; color:var(--darkInk); border-radius:10px;
+    padding:11px 13px; font-family:inherit; font-size:15px; outline:none;
+  }
+  .tool textarea{height:110px; resize:vertical; line-height:1.6}
+  .tool textarea:focus,.tool input:focus{border-color:var(--accent2)}
+  .draw-display{
+    margin:18px 0 6px; min-height:132px; border-radius:16px; border:2px dashed #3A3A3A;
+    display:grid; place-items:center; text-align:center; padding:14px;
+  }
+  .draw-name{font-size:clamp(38px,7vw,64px); font-weight:700; color:var(--accent2); line-height:1.1; word-break:break-all}
+  .draw-name.rolling{opacity:.6}
+  .draw-meta{font-size:13px; color:#8A857B; margin-top:6px}
+  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+  .row .grow{flex:1}
+  .switch{display:flex; align-items:center; gap:8px; font-size:13.5px; color:#B9B4A9; margin-top:12px}
+  .switch input{width:16px; height:16px; accent-color:var(--accent2)}
+  .history{display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; min-height:30px}
+  .history span{background:#242424; border:1px solid #383838; border-radius:999px; padding:4px 11px; font-size:13px; color:#D8D3C7}
+  .timer-wrap{display:flex; flex-direction:column; align-items:center; margin-top:14px}
+  .ring{position:relative; width:min(240px,62vw); aspect-ratio:1}
+  .ring svg{width:100%; height:100%; transform:rotate(-90deg)}
+  .ring .track{fill:none; stroke:#2A2A2A; stroke-width:12}
+  .ring .prog{fill:none; stroke:var(--accent2); stroke-width:12; stroke-linecap:round;
+    stroke-dasharray:565.49; stroke-dashoffset:0; transition:stroke-dashoffset .3s linear}
+  .ring .time{position:absolute; inset:0; display:grid; place-items:center; font-size:clamp(34px,7vw,52px);
+    font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:.03em}
+  .presets{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:16px 0 4px}
+  .preset{background:#242424; border:1px solid #383838; color:#D8D3C7; border-radius:999px; padding:7px 14px; font-size:13.5px}
+  .preset:hover,.preset.on{border-color:var(--accent2); color:var(--accent2)}
+  .timer-actions{display:flex; gap:10px; margin-top:16px}
+
+  /* ── battle ── */
+  .battle-shell{
+    background:var(--dark2); border:1px solid #2C2C2C; border-radius:26px;
+    padding:clamp(10px,1.6vw,18px);
+  }
+  .battle-shell iframe{
+    display:block; width:100%; height:820px; border:0; border-radius:16px;
+    background:var(--cream);
+  }
+  .battle-note{display:flex; gap:10px 22px; flex-wrap:wrap; margin-top:16px; color:#A8A399; font-size:13.5px}
+  .battle-note b{color:var(--accent2)}
+  .battle-note code{background:#242424; color:#E8E2D5; border:1px solid #383838; padding:3px 8px; border-radius:6px}
+
+  footer{background:var(--dark); color:#8A857B; padding:30px 0; font-size:13.5px}
+  footer .wrap{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap}
+  footer b{color:#D8D3C7}
+
+  @media (max-width:900px){
+    .grid2,.tools,.opts{grid-template-columns:1fr}
+    .battle-shell iframe{height:900px}
+    .hero{padding:54px 0 46px}
+    section{padding:56px 0}
+    .nav-in{height:58px}
+    .brand{font-size:15px}
+    .brand .full{display:none}
+  }
+  @media (max-width:560px){
+    .thumbs button{width:86px}
+    .kv{grid-template-columns:92px 1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important; transition:none!important; scroll-behavior:auto!important}
+  }
+</style>
+<style>
+  /* ── 追加：課程地圖 / 互動實驗室 / 圖庫 / 下載 ── */
+  .lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  .lesson-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+  .lesson-card .no{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;font-size:13px;font-weight:700;padding:3px 12px;margin-bottom:10px}
+  .lesson-card h3{font-size:19px;margin-bottom:8px}
+  .lesson-card p{font-size:14px;color:var(--sub);margin:0}
+  .lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .lab{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+  .lab .tag{display:inline-block;background:var(--greenSoft);color:#2b6b35;border-radius:999px;font-size:12.5px;font-weight:700;padding:3px 12px;margin-bottom:8px}
+  .lab h3{font-size:20px;margin-bottom:6px}
+  .lab .hint{font-size:14px;color:var(--sub);margin-bottom:14px}
+  .lab .stage{background:var(--cream);border:1px dashed var(--line);border-radius:14px;padding:18px;text-align:center;min-height:110px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .lab .stage .sc{font-size:17px;font-weight:700}
+  .lab .opts{display:flex;gap:10px;margin-top:14px}
+  .lab .opts button{flex:1;border:2px solid var(--line);background:#fff;border-radius:12px;padding:11px 0;font-size:15.5px;font-weight:700;transition:.15s}
+  .lab .opts button:hover{border-color:var(--accent);color:var(--accent)}
+  .lab .fb{margin-top:12px;font-size:14px;min-height:22px}
+  .lab .fb.ok{color:var(--green);font-weight:700}
+  .lab .fb.no{color:#C0392B;font-weight:700}
+  .lab .progress{margin-top:10px;font-size:13px;color:var(--muted)}
+  .mori{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .mori .slot{border:2px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:15.5px;min-height:44px;color:var(--muted);background:#fff;cursor:pointer;transition:.15s}
+  .mori .slot:hover{border-color:var(--accent)}
+  .mori .slot.done{border-style:solid;color:var(--ink);font-weight:700;background:var(--greenSoft);cursor:default}
+  .lab .reset-link{margin-top:10px;font-size:13.5px;color:var(--accent);background:none;border:none;text-decoration:underline;padding:0}
+  .gal-filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+  .gal-filters button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 16px;font-size:14px}
+  .gal-filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+  .gal-grid img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;background:#fff}
+  .dl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:20px}
+  .dl-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;text-decoration:none;display:block}
+  .dl-card em{font-style:normal;font-size:11.5px;font-weight:800;color:var(--accent);letter-spacing:.5px}
+  .dl-card b{display:block;font-size:16px;margin:4px 0 2px}
+  .dl-card span{font-size:13px;color:var(--sub)}
+  .speak{border:1.5px solid var(--line);background:#fff;border-radius:999px;font-size:13.5px;padding:4px 14px;margin-left:10px;vertical-align:middle}
+  .speak.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  @media (max-width:800px){.lessons,.lab-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <div class="brand">友誼維繫<span>。</span><span class="full" style="color:var(--muted);font-weight:400;font-size:13px"> 六上健體</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#plan">教案</a>
+      <a href="#deck">簡報</a>
+      <a href="#quiz">測驗</a>
+      <a href="#videos">影片</a>
+      <a href="#tools">工具</a>
+      <a href="#battle">對戰</a>
+      <a href="#gallery">圖庫</a>
+      <a href="#downloads">下載</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">康軒版・健康與體育・六年級上學期・單元一「健康用網路」第 2 課</div>
+    <h1>友誼維繫</h1>
+    <p class="lead">螢幕連結距離，真誠維繫友誼。兩節課的完整教學資源：教案、21 頁簡報（4 段旁白動畫）、10 題互動測驗、抽籤與計時器，以及最下方兩人對戰的「友誼維繫對戰」。</p>
+    <div class="chips">
+      <span class="chip g">通訊禮儀</span><span class="chip g">分享查證</span><span class="chip g">破除迷思</span>
+      <span class="chip o">自我肯定</span><span class="chip o">合宜表達</span><span class="chip o">友誼行動</span>
+      <span class="chip">80 分鐘</span><span class="chip">2 節課</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#deck">開始上課 ▸</a>
+      <a class="btn ghost" href="#quiz">隨堂測驗</a>
+      <a class="btn ghost" href="#tools">抽籤／計時器</a>
+      <a class="btn ghost" href="#battle">對戰遊戲</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ 課程地圖 ══════════ -->
+<section id="map">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">COURSE MAP</div>
+        <h2>3 節課，一步一步做網路的主人</h2>
+        <p>每一節都有一個「動手的任務」和一個「要記住的概念」。</p>
+      </div>
+    </div>
+    <div class="lessons">
+      <div class="lesson-card">
+        <span class="no">第一節</span>
+        <h3>正向使用與自我覺察</h3>
+        <p>網路四大功能、沉迷警訊，填寫「自我篩檢量表」學習單。</p>
+      </div>
+      <div class="lesson-card">
+        <span class="no">第二節</span>
+        <h3>沉迷的影響與遠離方法</h3>
+        <p>小傑的惡性循環、遠離五招，規畫放學後作息時間表。</p>
+      </div>
+      <div class="lesson-card">
+        <span class="no">第三節</span>
+        <h3>親子溝通與自我管理</h3>
+        <p>「我訊息」演練、訂定網路使用規範、10 題隨堂測驗。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 教案 ══════════ -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">LESSON PLAN</div>
+        <h2>教案</h2>
+        <p>兩節課 80 分鐘。第一節通訊軟體與網路分享禮儀；第二節互動迷思、自我肯定與情感合宜表達。</p>
+      </div>
+      <a class="btn dark small" href="downloads/教案_友誼維繫.docx" download>下載 Word 教案</a>
+    </div>
+
+    <div class="grid2" style="margin-bottom:16px">
+      <div class="info-card">
+        <h3><span class="num">i</span>課程資訊</h3>
+        <dl class="kv">
+          <dt>領域／科目</dt><dd>健康與體育（健康課）</dd>
+          <dt>版本／單元</dt><dd>康軒版 六上 單元一「健康用網路」第 2 課</dd>
+          <dt>教學年級</dt><dd>國小六年級（第三學習階段）</dd>
+          <dt>節數</dt><dd>2 節（80 分鐘）</dd>
+          <dt>課綱對照</dt><dd>3b-Ⅲ-2、3b-Ⅲ-4<br>學習內容：Db-Ⅲ-5｜議題：資E7、資E12</dd>
+        </dl>
+      </div>
+      <div class="info-card">
+        <h3><span class="num">◎</span>學習目標</h3>
+        <ul class="clean">
+          <li>能說出通訊軟體溝通禮儀的三項以上原則（先打招呼、說話清楚、不洗版、不打擾作息）。</li><li>能判斷上傳他人照片與轉傳訊息的行為是否適當，並說明「同意、節制、查證」的資訊倫理原則。</li><li>能破除「按讚數＝人緣好」的迷思，並說明線上互動與真實互動在友誼中的不同功能。</li><li>能運用「自我肯定」的生活技能，說出自己的三個優點，建立人際互動的自信。</li><li>能在溝通情境中選擇「同時考慮自己和對方感受」的合宜表達方式，並完成兩人演練。</li>
+        </ul>
+      </div>
+    </div>
+
+    <details class="acc open">
+      <summary>第一節｜通訊軟體與網路分享禮儀（40 分鐘）</summary>
+      <div class="body">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>時間</th><th>活動</th><th>教學說明</th></tr></thead>
+            <tbody>
+              <tr><td class="time">5 分</td><td>引起動機</td><td>「訊息大調查」：請學生舉手發表——今天用通訊軟體傳了什麼？有沒有遇過被洗版、被誤會、收到奇怪訊息的經驗？</td></tr><tr><td class="time">12 分</td><td>活動1：通訊軟體溝通禮儀</td><td>引導閱讀課本並配合影片（毒不添下片段）說明通訊軟體溝通禮儀：先打招呼、說話清楚、不洗版、不打擾作息；討論「文字沒有語氣」造成的誤會。</td></tr><tr><td class="time">12 分</td><td>活動2：網路訊息分享禮儀（一）</td><td>提問：你認為在社群網站任意上傳朋友出糗照片的行為適當嗎？為什麼？每天分享數十篇貼文適當嗎？播放【小安的雙胞胎事件簿】，討論未經同意公開他人影片的影響。</td></tr><tr><td class="time">8 分</td><td>活動3：社群訊息分享禮儀（二）</td><td>提問：直接轉貼他人訊息、發送未經證實的訊息適當嗎？播放媒體識讀影片，演練「轉傳前先查證」三步驟（看來源、找證據、問大人）。</td></tr><tr><td class="time">3 分</td><td>歸納與預告</td><td>歸納「同意、節制、查證」三原則；預告下節討論網路互動的迷思與情感表達。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>第二節｜互動迷思、自我肯定與情感表達（40 分鐘）</summary>
+      <div class="body">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>時間</th><th>活動</th><th>教學說明</th></tr></thead>
+            <tbody>
+              <tr><td class="time">5 分</td><td>引起動機</td><td>複習提問：上週的「同意、節制、查證」三原則，你做到了嗎？有沒有實際用上的例子？</td></tr><tr><td class="time">12 分</td><td>活動4：網路上互動的迷思</td><td>提問：社群貼文的按讚數和留言如果沒有受到關注，你會有什麼反應？與朋友在網路互動和真實世界互動，哪一種有助於友誼維繫？引導學生破除「按讚數＝人緣」的迷思。</td></tr><tr><td class="time">8 分</td><td>活動5：自我肯定</td><td>引導學生運用生活技能「自我肯定」，寫下自己的三個優點，建立與朋友互動的自信。</td></tr><tr><td class="time">12 分</td><td>活動6：情感合宜表達</td><td>引導閱讀課本，比較「隱藏自己真實的想法」「沒有考慮對方的感受」「同時考慮自己和他人的感受」哪一種較適當；播放溝通小高手影片，兩人一組演練兼顧雙方的表達句型。</td></tr><tr><td class="time">3 分</td><td>總結與評量</td><td>完成 10 題隨堂測驗（線上測驗或測驗卷）；布置「一週網路友誼觀察」課後延伸。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>常見迷思與澄清</summary>
+      <div class="body">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>學生常見想法</th><th>教學澄清</th></tr></thead>
+            <tbody>
+              <tr><td>「網路上看不見對方，說話不用客氣。」</td><td>文字沒有表情與語氣，比面對面更容易誤會和傷人；網路溝通更需要禮貌。</td></tr><tr><td>「朋友的糗照很好笑，先上傳再說。」</td><td>照片裡有別人，公開前要徵得同意；未經同意的公開會傷害隱私與友誼，甚至構成霸凌。</td></tr><tr><td>「大家都在轉傳，這訊息應該是真的。」</td><td>轉傳次數多不等於真實；查證來源再分享，才不會成為假訊息的幫手。</td></tr><tr><td>「按讚多就是人緣好、就代表我被喜歡。」</td><td>讚數只是表面數字，受演算法與曝光影響；真實的友誼建立在相處與關心，不由數字決定。</td></tr><tr><td>「在網路上互動就很夠了，不用見面。」</td><td>線上互動方便但不能完全取代面對面相處；一起活動、觀察彼此，才能累積深厚的了解與信任。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>評量設計與差異化</summary>
+      <div class="body">
+        <p><strong>評量方式：</strong>口頭發表（出糗照、貼文、轉傳三情境的討論）、網路互動禮儀自我檢核的完成與討論（第一節）、訊息查證練習與「兼顧雙方感受」句型演練（實作評量）、隨堂測驗 10 題（第二節末，答對 7 題以上通過）。</p>
+        <p><strong>需要協助的學生：</strong>提供「我覺得…因為…我希望…」句型提示卡，先完成一個情境的合宜表達即可；行動學習單可改與導師或同學互相演練。</p>
+        <p><strong>學有餘力的學生：</strong>設計一份給全校的「網路分享三原則」宣導海報或短劇，比較不同做法的長期效果。</p>
+        <p style="margin-bottom:0"><strong>課後延伸：</strong>一週網路友誼觀察（記錄線上互動與真實相處）、和家人分享「同意、節制、查證」三原則並檢查家中群組訊息。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════ 互動實驗室 ══════════ -->
+<section id="labs" style="background:#EFEAE0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">INTERACTIVE LABS</div>
+        <h2>互動練習：先玩，再討論</h2>
+        <p>上臺發表前，先在這裡練一遍。兩個小活動都對應課堂活動。</p>
+      </div>
+    </div>
+    <div class="lab-grid">
+      <div class="lab">
+        <span class="tag">練習 ①</span>
+        <h3>這樣上網 OK 嗎？</h3>
+        <p class="hint">連續判斷 8 個情境：這樣的使用恰當嗎？判斷完說說你的理由。</p>
+        <div class="stage">
+          <div class="sc" id="s1Text">—</div>
+        </div>
+        <div class="opts">
+          <button id="s1Ok">恰當 ✓</button>
+          <button id="s1No">不恰當 ✗</button>
+        </div>
+        <div class="fb" id="s1Fb"></div>
+        <div class="progress" id="s1Prog"></div>
+      </div>
+      <div class="lab">
+        <span class="tag">練習 ②</span>
+        <h3>我訊息拼圖</h3>
+        <p class="hint">按「事件→感受→影響→期望」的順序，點選下面四句話（亂數排列）。</p>
+        <div class="mori" id="moriSlots">
+          <div class="slot" data-n="1">1. 事件</div>
+          <div class="slot" data-n="2">2. 感受</div>
+          <div class="slot" data-n="3">3. 影響</div>
+          <div class="slot" data-n="4">4. 期望</div>
+        </div>
+        <div class="fb" id="moriFb"></div>
+        <button class="reset-link" id="moriReset">重新開始</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 簡報 ══════════ -->
+<section id="deck" class="dark-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">SLIDES · 21 PAGES</div>
+        <h2>教學簡報</h2>
+        <p>用左右鍵或下方縮圖換頁。第 9、12、16、18 頁是含旁白的動畫，點播放即可。</p>
+      </div>
+      <a class="btn ghost small" href="downloads/友誼維繫_教學簡報.pptx" download>下載 PowerPoint</a>
+    </div>
+
+    <div class="deck-shell">
+      <div class="stage" id="stage">
+        <div class="badge-sound">🔊 含旁白</div>
+        <img id="slideImg" src="slides/slide01.jpg" alt="簡報第 1 頁" />
+        <video id="slideVideo" controls preload="none" playsinline></video>
+      </div>
+      <div class="deck-bar">
+        <button class="icon-btn" id="prevBtn" aria-label="上一頁">◀</button>
+        <button class="icon-btn" id="nextBtn" aria-label="下一頁">▶</button>
+        <span class="counter" id="counter">1 / 21</span>
+        <span class="spacer"></span>
+        <button class="btn ghost small" id="fsBtn">全螢幕</button>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+      <div class="hint">提示：投影片以 16:9 製作；按 F11 或「全螢幕」可投影。動畫頁有旁白，建議先試播確認音量。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 測驗 ══════════ -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">QUIZ · 10 QUESTIONS</div>
+        <h2>隨堂測驗</h2>
+        <p>每題答完立刻看解析。10 題滿分 100 分，答對 7 題以上就過關，成為「友誼小達人」。</p>
+      </div>
+    </div>
+
+    <div class="quiz" id="quizBox">
+      <div class="q-top">
+        <span class="q-count" id="qCount">第 1 題 / 共 10 題</span>
+        <span class="q-score" id="qScore">得分 0</span>
+      </div>
+      <div class="bar"><i id="qBar"></i></div>
+      <div class="q-text" id="qText"></div>
+      <div class="opts" id="qOpts"></div>
+      <div class="fb" id="qFb"></div>
+      <div class="q-foot" id="qFoot" style="display:none">
+        <span class="spacer"></span>
+        <button class="btn primary" id="nextQ">下一題 ▸</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 影片 ══════════ -->
+<section id="videos" style="background:#EFEAE0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">REFERENCE VIDEOS</div>
+        <h2>參考影片</h2>
+        <p>搭配課程使用的公開影片，點擊會在新分頁開啟。影片版權屬原作者所有。</p>
+      </div>
+    </div>
+    <div class="video-grid" id="videoGrid"></div>
+    <p style="color:var(--muted); font-size:13px; margin-top:20px">建議順序：毒不添下（健康使用）→ 小安的雙胞胎事件簿（分享禮儀）→ 媒體識讀（查證）→ 識讀加油站（微查核）→ 我是溝通小高手（合宜表達）。可作為課前預習或課後複習。</p>
+  </div>
+</section>
+
+<!-- ══════════ 工具 ══════════ -->
+<section id="tools" class="dark-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">CLASSROOM TOOLS</div>
+        <h2>上課工具</h2>
+        <p>抽籤點名、倒數計時，直接投影使用。</p>
+      </div>
+    </div>
+
+    <div class="tools">
+      <!-- 抽籤 -->
+      <div class="tool">
+        <h3>抽籤筒 <span>支援座號或姓名，可不重複</span></h3>
+        <label for="pool">名單（每行一個，預設 01–30）</label>
+        <textarea id="pool" spellcheck="false"></textarea>
+        <div class="row" style="margin-top:12px">
+          <button class="btn primary grow" id="drawBtn">抽一個</button>
+          <button class="btn ghost small" id="resetDraw">重置</button>
+        </div>
+        <label class="switch"><input type="checkbox" id="noRepeat" checked /> 抽過不再抽（不重複）</label>
+        <div class="draw-display">
+          <div>
+            <div class="draw-name" id="drawName">—</div>
+            <div class="draw-meta" id="drawMeta">按「抽一個」開始</div>
+          </div>
+        </div>
+        <div class="history" id="drawHistory"></div>
+      </div>
+
+      <!-- 計時器 -->
+      <div class="tool">
+        <h3>倒數計時器 <span>時間到會發出提示音</span></h3>
+        <div class="timer-wrap">
+          <div class="ring">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <circle class="track" cx="100" cy="100" r="90"></circle>
+              <circle class="prog" id="ringProg" cx="100" cy="100" r="90"></circle>
+            </svg>
+            <div class="time" id="timerText">05:00</div>
+          </div>
+          <div class="presets" id="presets">
+            <button class="preset" data-min="1">1 分</button>
+            <button class="preset" data-min="3">3 分</button>
+            <button class="preset on" data-min="5">5 分</button>
+            <button class="preset" data-min="10">10 分</button>
+            <button class="preset" data-min="15">15 分</button>
+          </div>
+          <div class="row" style="width:100%; margin-top:6px">
+            <input id="customMin" type="number" min="1" max="120" placeholder="自訂分鐘" style="flex:1" />
+            <button class="btn ghost small" id="setCustom">設定</button>
+          </div>
+          <div class="timer-actions">
+            <button class="btn primary" id="startTimer">開始</button>
+            <button class="btn ghost" id="resetTimer">歸零</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 對戰 ══════════ -->
+<section id="battle" class="dark-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">BATTLE · 2 PLAYERS · 10 QUESTIONS</div>
+        <h2>友誼維繫對戰</h2>
+        <p>兩人一室，搶答 10 題。答對 +1 分、答錯不扣分，先答對的人拿下這一題。學生用另一台裝置連進同一個 Wi-Fi 就能自動配對。</p>
+      </div>
+      <a class="btn ghost small" href="battle.html" target="_blank" rel="noopener">另開對戰頁 ↗</a>
+    </div>
+
+    <div class="battle-shell">
+      <iframe id="battleFrame" src="battle.html?embed=1" title="友誼維繫對戰" loading="lazy" allow="autoplay"></iframe>
+    </div>
+
+    <div class="battle-note" id="battleNote">
+      <span><b>老師：</b>先雙擊 <code>start-battle.bat</code> 啟動伺服器。</span>
+      <span><b>學生：</b>開 <code>http://老師電腦IP:8765/battle.html</code>，輸入名字即可配對。</span>
+      <span><b>規則：</b>每題 20 秒，答錯換對手答；10 題結束結算勝負。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 素材圖庫 ══════════ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">GALLERY</div>
+        <h2>素材圖庫：22 張概念卡</h2>
+        <p>上課投影、張貼、做學習單都可以用。點圖可看原圖。</p>
+      </div>
+    </div>
+    <div class="gal-filters" id="galFilters">
+      <button class="on" data-g="all">全部 22</button>
+      <button data-g="01">概念 7</button>
+      <button data-g="02">警訊與方法 9</button>
+      <button data-g="03">溝通與規範 6</button>
+    </div>
+    <div class="gal-grid" id="galGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ 下載 ══════════ -->
+<section id="downloads" style="background:#EFEAE0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">DOWNLOADS</div>
+        <h2>教案、簡報、學習單</h2>
+        <p>要列印、要修改都可以直接用。</p>
+      </div>
+    </div>
+    <div class="dl-grid">
+      <a class="dl-card" href="downloads/教案_友誼維繫.docx" download>
+        <em>DOCX</em><b>教案（2 節）</b><span>含教學流程、評量、差異化與省思欄</span>
+      </a>
+      <a class="dl-card" href="downloads/友誼維繫_教學簡報.pptx" download>
+        <em>PPTX</em><b>教學簡報</b><span>21 頁，16:9，可直接投影</span>
+      </a>
+      <a class="dl-card" href="downloads/學習單1_網路互動禮儀檢核.docx" download>
+        <em>DOCX</em><b>學習單 ①</b><span>互動禮儀檢核表＋訊息查證練習</span>
+      </a>
+      <a class="dl-card" href="downloads/學習單2_合宜表達與友誼行動.docx" download>
+        <em>DOCX</em><b>學習單 ②</b><span>自我肯定＋兼顧雙方句型練習</span>
+      </a>
+      <a class="dl-card" href="downloads/測驗卷_友誼維繫.pdf" download>
+        <em>PDF</em><b>測驗卷</b><span>10 題，附答案與解析</span>
+      </a>
+      <a class="dl-card" href="downloads/測驗卷_友誼維繫.docx" download>
+        <em>DOCX</em><b>測驗卷（可編輯）</b><span>想改題目就用這份</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="media/images.js"></script>
+<script src="battle-api.js"></script>
+<script>
+(function () {
+  var api = (typeof window.BATTLE_API === 'string') ? window.BATTLE_API : '';
+  if (!api) return;
+  var note = document.getElementById('battleNote');
+  if (note) {
+    note.innerHTML =
+      '<span><b>線上版：</b>兩人各自開這個網頁，往下捲到對戰區，輸入名字即可配對。</span>' +
+      '<span><b>教室版：</b>想用區網（不依賴網路）就雙擊 <code>start-battle.bat</code>。</span>' +
+      '<span><b>規則：</b>每題 20 秒，答錯換對手答；10 題結束結算勝負。</span>';
+  }
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div><b>友誼維繫</b>｜康軒版六上健體・教學專欄</div>
+    <div>教案 Word ・ 簡報 21 頁 ・ 4 段旁白動畫 ・ 10 題測驗</div>
+  </div>
+</footer>
+
+<script>
+/* ══════════════ 資料 ══════════════ */
+const SLIDES = [
+  { img:"slides/slide01.jpg" },
+  { img:"slides/slide02.jpg" },
+  { img:"slides/slide03.jpg" },
+  { img:"slides/slide04.jpg" },
+  { img:"slides/slide05.jpg" },
+  { img:"slides/slide06.jpg" },
+  { img:"slides/slide07.jpg" },
+  { img:"slides/slide08.jpg" },
+  { img:"slides/slide09.jpg", video:"media/p09.mp4" },
+  { img:"slides/slide10.jpg" },
+  { img:"slides/slide11.jpg" },
+  { img:"slides/slide12.jpg", video:"media/p12.mp4" },
+  { img:"slides/slide13.jpg" },
+  { img:"slides/slide14.jpg" },
+  { img:"slides/slide15.jpg" },
+  { img:"slides/slide16.jpg", video:"media/p16.mp4" },
+  { img:"slides/slide17.jpg" },
+  { img:"slides/slide18.jpg", video:"media/p18.mp4" },
+  { img:"slides/slide19.jpg" },
+  { img:"slides/slide20.jpg" },
+  { img:"slides/slide21.jpg" }
+];
+
+const QUIZ = [
+  { q:"在通訊軟體上和同學說話，下列哪一種最有禮貌？", o:["深夜想到就連環傳訊，反正對方睡覺不會吵到","先打招呼，把話說清楚，一次說完不洗版","用全部大寫英文和一堆驚嘆號表達情緒","故意傳奇怪的圖片嚇同學，看他反應"], a:1,
+    e:"通訊軟體禮儀：先打招呼、說話清楚、不洗版、不打擾對方作息。" },
+  { q:"想把朋友出糗的照片上傳到社群網站，正確的做法是什麼？", o:["先問過照片裡的朋友，他同意才上傳","他不知道就沒關係，先上傳再說","把臉遮起來就好了，不算冒犯","傳到不認識他的群組，他就看不到"], a:0,
+    e:"照片裡有別人，上傳前一定要先徵得對方同意，這是尊重也是資訊倫理。" },
+  { q:"群組裡出現「這則訊息不轉傳會倒楣」，最恰當的處理方式是？", o:["趕快轉傳給所有人，避免倒楣","先查證訊息是否真實，不隨意轉傳","再加一句「是真的！我試過了」再轉傳","只傳給好朋友，不要傳給陌生人"], a:1,
+    e:"轉傳前先查證；用恐嚇要求轉傳的訊息幾乎都是假訊息，不該幫忙散播。" },
+  { q:"為什麼「按讚數」不能用來判斷友誼的好壞？", o:["因為按讚的人都要付錢","因為讚只能按一次","因為數字只是表面，友誼深淺來自真實的關心與相處","因為社群網站的按讚功能常常壞掉"], a:2,
+    e:"按讚只是快速的反應，真正的友誼建立在日常相處、互相幫助與關心。" },
+  { q:"關於「線上互動」和「真實互動」，下列說明哪一項正確？", o:["線上互動可以完全取代見面","線上互動很方便，但無法取代面對面相處，友誼需要兩者平衡","只有線上互動才算真正的朋友","真實互動已經過時了"], a:1,
+    e:"線上聯繫方便快速，但一起活動、面對面說話，才能累積更深的了解與信任。" },
+  { q:"「自我肯定」最主要的意思是什麼？", o:["只要自己覺得對，別人的意見都不用聽","認識自己的優點與價值，不因別人一時的評價或按讚數懷疑自己","凡事都要搶第一，證明自己最強","覺得自己永遠不會犯錯"], a:1,
+    e:"自我肯定是了解並接納自己的價值，讓我們在人際互動中更自信、更穩定。" },
+  { q:"同學一直用訊息轟炸你，內容其實沒事只是洗版。你用「兼顧雙方感受」的方式回應，怎麼說最適當？", o:["直接封鎖他，什麼也不說","「你很煩欸，不要再傳了！」","「我了解你想跟我聊天，但我們都在寫功課，晚上七點以後我再好好回你好嗎？」","已讀不回，看他會不會自己停止"], a:2,
+    e:"先接住對方的心意，再說出自己的狀況與期望，兼顧雙方感受，友誼才不會受傷。" },
+  { q:"你發現同學沒問過你，就把你的糗照放上社群網站。下列做法最恰當的是？", o:["也在網路上放他的糗照報仇","到他的貼文下罵髒話讓大家評理","假裝沒事，從此不理這個朋友","当面或私訊告訴他你的感受，請他刪掉照片；必要時請老師協助"], a:3,
+    e:"表達感受、請對方移除，是解決問題的正路；報復或謾罵只會讓傷害擴大。" },
+  { q:"朋友答應的事一直沒做到，你覺得難過。用「兼顧雙方」的說法，哪一句最合適？", o:["「沒關係啦……（心裡其實很難過，但忍住不說）」","「你就是一個只會說謊的人！」","「你上次說好要來，我等了很久有點難過，是不是遇到什麼事？下次我們再約好嗎？」","「我以後再也不會相信你了，絕交！」"], a:2,
+    e:"說出自己的感受（不隱藏），也關心對方的狀況（不指責），並提出建設性的期望。" },
+  { q:"面對「隱藏想法」「不顧對方感受」「兼顧雙方感受」三種溝通方式，為什麼「兼顧雙方」最適當？", o:["因為這樣講話最快、最省事","因為既能真實表達自己，也尊重對方，問題才有機會解決","因為永遠都不會有任何衝突","因為對方一定會照你的話做"], a:1,
+    e:"隱藏想法會累積委屈、不顧對方會傷害友誼；兼顧雙方才能表達自己又維繫關係。" }
+];
+
+const VIDEOS = [
+  { t:"[毒不添下] 網路成癮教學動畫", d:"毒不添下｜活動1 引入：健康使用通訊軟體，先從不被螢幕綁架開始", u:"https://www.youtube.com/watch?v=9kNYFzAjSzQ", id:"9kNYFzAjSzQ", s:"YouTube" },
+  { t:"網路霸凌【小安的雙胞胎事件簿】", d:"eliteracy 中小學數位素養教育資源網｜活動2「網路訊息分享禮儀」：未經同意上傳他人影片的傷害", u:"https://www.youtube.com/watch?v=-BiLfVM74wA", id:"-BiLfVM74wA", s:"YouTube" },
+  { t:"媒體識讀(2) 網路訊息 小心查證假新聞【停看聽 真假新聞知權利】", d:"民視讚夯 Formosa TV Thumbs Up｜活動3「社群訊息分享禮儀」：轉傳前先查證", u:"https://www.youtube.com/watch?v=kMpu3oVqiYI", id:"kMpu3oVqiYI", s:"YouTube" },
+  { t:"【莒光園地】事實觀測所：識讀加油站—日常生活中的微查核", d:"國防部政治作戰局｜活動3 補充：生活中的查證技巧", u:"https://www.youtube.com/watch?v=b4VewJzhpXU", id:"b4VewJzhpXU", s:"YouTube" },
+  { t:"【未來小學堂】我是溝通小高手｜未來兒童", d:"未來親子TV｜活動5、6「自我肯定與情感合宜表達」：溝通技巧演練", u:"https://www.youtube.com/watch?v=eRfPM0HpCLY", id:"eRfPM0HpCLY", s:"YouTube" }
+];
+
+/* ══════════════ 導覽 active ══════════════ */
+const navA = [...document.querySelectorAll('#navLinks a')];
+const secs = navA.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      navA.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id));
+    }
+  });
+}, { rootMargin:'-45% 0px -50% 0px' });
+secs.forEach(s => io.observe(s));
+
+/* ══════════════ 簡報 ══════════════ */
+const stage = document.getElementById('stage');
+const imgEl = document.getElementById('slideImg');
+const videoEl = document.getElementById('slideVideo');
+const counter = document.getElementById('counter');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const thumbs = document.getElementById('thumbs');
+let cur = 0;
+
+SLIDES.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.setAttribute('aria-label', '第 ' + (i+1) + ' 頁');
+  const im = document.createElement('img');
+  im.src = s.img; im.alt = ''; im.loading = 'lazy';
+  b.appendChild(im);
+  b.addEventListener('click', () => go(i));
+  thumbs.appendChild(b);
+});
+
+function stopVideo(){
+  if (!videoEl.paused) videoEl.pause();
+  videoEl.removeAttribute('src');
+  videoEl.load();
+  stage.classList.remove('has-video');
+}
+
+function go(i){
+  if (i < 0 || i >= SLIDES.length) return;
+  stopVideo();
+  cur = i;
+  const s = SLIDES[i];
+  imgEl.src = s.img;
+  imgEl.alt = '簡報第 ' + (i+1) + ' 頁';
+  if (s.video){
+    stage.classList.add('has-video');
+    videoEl.src = s.video;
+    videoEl.poster = s.img;
+    videoEl.load();
+  }
+  counter.textContent = (i+1) + ' / ' + SLIDES.length;
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === SLIDES.length - 1;
+  [...thumbs.children].forEach((b, k) => b.classList.toggle('on', k === i));
+  const t = thumbs.children[i];
+  if (t){
+    const left = t.offsetLeft - thumbs.clientWidth / 2 + t.clientWidth / 2;
+    thumbs.scrollTo({ left, behavior: 'smooth' });
+  }
+}
+prevBtn.addEventListener('click', () => go(cur - 1));
+nextBtn.addEventListener('click', () => go(cur + 1));
+window.addEventListener('keydown', e => {
+  if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+  if (e.key === 'ArrowRight') go(cur + 1);
+  if (e.key === 'ArrowLeft') go(cur - 1);
+});
+document.getElementById('fsBtn').addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  else stage.requestFullscreen?.();
+});
+go(0);
+
+/* ══════════════ 語音朗讀（Web Speech API） ══════════════ */
+const SPEECH_OK = ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance !== 'undefined');
+let speakBtnOn = null, zhVoice = null;
+
+function pickZhVoice(){
+  if (!SPEECH_OK) return null;
+  const vs = window.speechSynthesis.getVoices() || [];
+  if (!vs.length) return null;
+  const res = [/zh[-_]TW/i, /Chinese.*(Taiwan|Traditional)/i, /Hanhan|Yating|HsiaoChen|Zhiwei|Tingting/i, /^zh/i];
+  for (const re of res){
+    const v = vs.find(x => re.test((x.lang || '') + ' ' + (x.name || '')));
+    if (v) return v;
+  }
+  return null;
+}
+if (SPEECH_OK){
+  zhVoice = pickZhVoice();
+  if (typeof window.speechSynthesis.addEventListener === 'function'){
+    window.speechSynthesis.addEventListener('voiceschanged', () => { zhVoice = pickZhVoice(); });
+  }
+}
+function stopSpeak(){
+  if (!SPEECH_OK) return;
+  try { window.speechSynthesis.cancel(); } catch (e) {}
+  if (speakBtnOn){
+    speakBtnOn.classList.remove('on');
+    speakBtnOn.textContent = '🔊 念題目';
+    speakBtnOn = null;
+  }
+}
+function speakText(text, btn){
+  if (!SPEECH_OK){ alert('這個瀏覽器不支援語音朗讀，請改用 Chrome、Edge 或 Safari'); return; }
+  if (btn.classList.contains('on')){ stopSpeak(); return; }
+  stopSpeak();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-TW'; u.rate = 0.9; u.pitch = 1; u.volume = 1;
+  const v = zhVoice || pickZhVoice(); if (v) u.voice = v;
+  const done = () => {
+    if (speakBtnOn === btn){ btn.classList.remove('on'); btn.textContent = '🔊 念題目'; speakBtnOn = null; }
+  };
+  u.onend = done; u.onerror = done;
+  speakBtnOn = btn; btn.classList.add('on'); btn.textContent = '⏹ 停止';
+  window.speechSynthesis.speak(u);
+}
+function quizSpeech(q, idx){
+  return `第 ${idx + 1} 題。${q.q}。選項：` + q.o.map((o, k) => `${'ABCD'[k]}，${o}`).join('。') + '。';
+}
+
+/* ══════════════ 測驗 ══════════════ */
+const qBox = document.getElementById('quizBox');
+let qCount, qScore, qBar, qText, qOpts, qFb, qFoot, nextQ;
+let qi = 0, score = 0, answered = false, picked = null, marks = [];
+
+function renderQ(){
+  answered = false; picked = null;
+  const item = QUIZ[qi];
+  qCount.textContent = '第 ' + (qi+1) + ' 題 / 共 ' + QUIZ.length + ' 題';
+  qScore.textContent = '得分 ' + score;
+  qBar.style.width = (qi / QUIZ.length * 100) + '%';
+  qText.textContent = (qi+1) + '. ' + item.q;
+  let sb = document.getElementById('qSpeak');
+  if (sb) sb.remove();
+  if (SPEECH_OK){
+    sb = document.createElement('button');
+    sb.className = 'speak'; sb.id = 'qSpeak'; sb.type = 'button';
+    sb.title = '朗讀題目與選項'; sb.textContent = '🔊 念題目';
+    sb.addEventListener('click', () => speakText(quizSpeech(item, qi), sb));
+    qText.insertAdjacentElement('afterend', sb);
+  }
+  qOpts.innerHTML = '';
+  qFb.className = 'fb';
+  qFb.innerHTML = '';
+  qFoot.style.display = 'none';
+
+  item.o.forEach((txt, k) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = '<span class="letter">' + 'ABCD'[k] + '</span><span>' + txt + '</span>';
+    b.addEventListener('click', () => choose(k, b));
+    qOpts.appendChild(b);
+  });
+}
+
+function choose(k, btn){
+  if (answered) return;
+  stopSpeak();
+  answered = true; picked = k;
+  const item = QUIZ[qi];
+  const opts = [...qOpts.children];
+  opts.forEach((b, idx) => {
+    b.disabled = true;
+    if (idx === item.a) b.classList.add('correct');
+    if (idx === k && k !== item.a) b.classList.add('wrong');
+  });
+  const ok = k === item.a;
+  if (ok) score += 10;
+  marks.push({ q:item.q, picked:k, ok, correct:item.a, e:item.e });
+  qScore.textContent = '得分 ' + score;
+  qFb.className = 'fb show ' + (ok ? 'ok' : 'no');
+  qFb.innerHTML = '<b>' + (ok ? '答對了！' : '再想一想') + '</b>' +
+    '正確答案：' + 'ABCD'[item.a] + '．' + item.o[item.a] + '<br>' + item.e;
+  qFoot.style.display = 'flex';
+  nextQ.textContent = (qi === QUIZ.length - 1) ? '看結果 ▸' : '下一題 ▸';
+  qBar.style.width = ((qi+1) / QUIZ.length * 100) + '%';
+}
+
+function showResult(){
+  stopSpeak();
+  const pct = score;
+  let msg, sub;
+  if (pct >= 80){ msg = '友誼小達人！'; sub = '同意・節制・查證＋合宜表達，你全都掌握了。'; }
+  else if (pct >= 60){ msg = '很厲害！'; sub = '再複習錯的那幾題，就滿分了。'; }
+  else if (pct >= 40){ msg = '不錯，再加油！'; sub = '回到簡報看看「網路分享三原則」，再挑戰一次。'; }
+  else { msg = '再來一次！'; sub = '先看一遍簡報 p3–p21，你會發現簡單很多。'; }
+
+  qBox.innerHTML =
+    '<div class="result">' +
+      '<div class="big">' + score + '<span style="font-size:24px;color:var(--muted)"> / 100</span></div>' +
+      '<div class="msg">' + msg + '</div>' +
+      '<div class="sub">' + sub + '</div>' +
+    '</div>' +
+    '<div style="text-align:center;margin:22px 0 8px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">' +
+      '<button class="btn primary" id="again">再測一次</button>' +
+      '<a class="btn ghost" style="color:var(--ink);border-color:var(--line)" href="#deck">回到簡報</a>' +
+    '</div>' +
+    '<div class="review" id="review"></div>';
+
+  const rv = document.getElementById('review');
+  marks.forEach((m, i) => {
+    const d = document.createElement('details');
+    d.innerHTML = '<summary><span class="' + (m.ok ? 'ok' : 'no') + '">' + (m.ok ? '✓' : '✕') + '</span> ' +
+      '第 ' + (i+1) + ' 題：' + m.q + '</summary>' +
+      '<div class="rv">你的答案：' + 'ABCD'[m.picked] + '．' + QUIZ[i].o[m.picked] + '<br>' +
+      '正確答案：' + 'ABCD'[m.correct] + '．' + QUIZ[i].o[m.correct] + '<br>' + m.e + '</div>';
+    rv.appendChild(d);
+  });
+
+  document.getElementById('again').addEventListener('click', () => {
+    qi = 0; score = 0; marks = [];
+    qBox.innerHTML =
+      '<div class="q-top"><span class="q-count" id="qCount"></span><span class="q-score" id="qScore"></span></div>' +
+      '<div class="bar"><i id="qBar"></i></div>' +
+      '<div class="q-text" id="qText"></div>' +
+      '<div class="opts" id="qOpts"></div>' +
+      '<div class="fb" id="qFb"></div>' +
+      '<div class="q-foot" id="qFoot" style="display:none"><span class="spacer"></span>' +
+      '<button class="btn primary" id="nextQ">下一題 ▸</button></div>';
+    bindQuizRefs();
+    renderQ();
+    document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+  });
+}
+
+function bindQuizRefs(){
+  qCount = document.getElementById('qCount');
+  qScore = document.getElementById('qScore');
+  qBar = document.getElementById('qBar');
+  qText = document.getElementById('qText');
+  qOpts = document.getElementById('qOpts');
+  qFb = document.getElementById('qFb');
+  qFoot = document.getElementById('qFoot');
+  nextQ = document.getElementById('nextQ');
+  nextQ.addEventListener('click', () => {
+    if (qi < QUIZ.length - 1){ qi++; renderQ(); }
+    else showResult();
+  });
+}
+bindQuizRefs();
+renderQ();
+
+/* ══════════════ 影片卡 ══════════════ */
+const vg = document.getElementById('videoGrid');
+VIDEOS.forEach(v => {
+  const a = document.createElement('a');
+  a.className = 'vcard'; a.href = v.u; a.target = '_blank'; a.rel = 'noopener';
+  const thumb = v.id ? 'https://img.youtube.com/vi/' + v.id + '/hqdefault.jpg' : '';
+  a.innerHTML =
+    '<div class="vthumb">' +
+      (thumb ? '<img src="' + thumb + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+             : '<div class="fallback">' + v.s + '</div>') +
+      '<div class="play">▶</div>' +
+      '<span class="src">' + v.s + '</span>' +
+    '</div>' +
+    '<div class="vbody"><h4>' + v.t + '</h4><p>' + v.d + '</p></div>';
+  vg.appendChild(a);
+});
+
+/* ══════════════ 抽籤 ══════════════ */
+const poolEl = document.getElementById('pool');
+const drawName = document.getElementById('drawName');
+const drawMeta = document.getElementById('drawMeta');
+const drawHistory = document.getElementById('drawHistory');
+const noRepeat = document.getElementById('noRepeat');
+const drawBtn = document.getElementById('drawBtn');
+
+poolEl.value = Array.from({length:30}, (_,i) => String(i+1).padStart(2,'0')).join('\n');
+
+let remaining = [];
+let history = [];
+let rolling = false;
+
+function readPool(){
+  return poolEl.value.split('\n').map(s => s.trim()).filter(Boolean);
+}
+function resetPool(){
+  remaining = readPool();
+  history = [];
+  drawHistory.innerHTML = '';
+  drawName.textContent = '—';
+  drawMeta.textContent = '共 ' + remaining.length + ' 人，按「抽一個」開始';
+  drawName.classList.remove('rolling');
+  drawBtn.disabled = false;
+  rolling = false;
+}
+poolEl.addEventListener('input', resetPool);
+document.getElementById('resetDraw').addEventListener('click', resetPool);
+resetPool();
+
+drawBtn.addEventListener('click', () => {
+  if (rolling) return;
+  let list = noRepeat.checked ? remaining : readPool();
+  if (!list.length){
+    drawMeta.textContent = '名單已抽完，按「重置」再來一次';
+    return;
+  }
+  rolling = true;
+  drawBtn.disabled = true;
+  drawName.classList.add('rolling');
+  const start = performance.now();
+  const timer = setInterval(() => {
+    drawName.textContent = list[Math.floor(Math.random() * list.length)];
+    if (performance.now() - start > 1100){
+      clearInterval(timer);
+      const pick = list[Math.floor(Math.random() * list.length)];
+      drawName.textContent = pick;
+      drawName.classList.remove('rolling');
+      if (noRepeat.checked){
+        remaining = remaining.filter(x => x !== pick);
+      }
+      history.unshift(pick);
+      drawHistory.innerHTML = history.slice(0, 12).map(x => '<span>' + x + '</span>').join('');
+      drawMeta.textContent = noRepeat.checked
+        ? '剩下 ' + remaining.length + ' 人・已抽 ' + history.length + ' 次'
+        : '已抽 ' + history.length + ' 次';
+      drawBtn.disabled = false;
+      rolling = false;
+    }
+  }, 55);
+});
+
+/* ══════════════ 計時器 ══════════════ */
+const ring = document.getElementById('ringProg');
+const timerText = document.getElementById('timerText');
+const startBtn = document.getElementById('startTimer');
+const resetBtn = document.getElementById('resetTimer');
+const C = 2 * Math.PI * 90;
+
+let total = 300, left = 300, running = false, tick = null, endAt = 0;
+
+function fmt(s){
+  s = Math.max(0, Math.ceil(s));
+  const m = Math.floor(s / 60), r = s % 60;
+  return String(m).padStart(2,'0') + ':' + String(r).padStart(2,'0');
+}
+function paint(){
+  timerText.textContent = fmt(left);
+  const p = total > 0 ? Math.max(0, Math.min(1, left / total)) : 0;
+  ring.style.strokeDashoffset = String(C * (1 - p));
+}
+function setMinutes(m){
+  total = Math.round(m * 60);
+  left = total;
+  stop();
+  paint();
+  [...document.querySelectorAll('.preset')].forEach(b => b.classList.toggle('on', Number(b.dataset.min) === m));
+  document.getElementById('customMin').value = '';
+}
+function stop(){
+  running = false;
+  clearInterval(tick);
+  startBtn.textContent = '開始';
+}
+function beep(){
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AC();
+    [0, 0.32, 0.64].forEach(t => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine'; o.frequency.value = 880;
+      g.gain.setValueAtTime(0.001, ctx.currentTime + t);
+      g.gain.exponentialRampToValueAtTime(0.28, ctx.currentTime + t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.26);
+      o.connect(g); g.connect(ctx.destination);
+      o.start(ctx.currentTime + t); o.stop(ctx.currentTime + t + 0.3);
+    });
+    setTimeout(() => ctx.close(), 1400);
+  }catch(err){}
+}
+startBtn.addEventListener('click', () => {
+  if (running){ stop(); return; }
+  if (left <= 0) left = total;
+  running = true;
+  startBtn.textContent = '暫停';
+  endAt = performance.now() + left * 1000;
+  tick = setInterval(() => {
+    left = (endAt - performance.now()) / 1000;
+    if (left <= 0){
+      left = 0; paint(); stop();
+      timerText.textContent = '時間到';
+      beep();
+      setTimeout(() => { if (!running) { timerText.textContent = fmt(total); paint(); } }, 4000);
+      return;
+    }
+    paint();
+  }, 200);
+});
+resetBtn.addEventListener('click', () => { stop(); left = total; paint(); });
+document.getElementById('presets').addEventListener('click', e => {
+  const b = e.target.closest('.preset');
+  if (b) setMinutes(Number(b.dataset.min));
+});
+document.getElementById('setCustom').addEventListener('click', () => {
+  const v = Number(document.getElementById('customMin').value);
+  if (v > 0 && v <= 120){
+    [...document.querySelectorAll('.preset')].forEach(b => b.classList.remove('on'));
+    total = Math.round(v * 60); left = total; stop(); paint();
+  }
+});
+paint();
+
+/* ══════════════ 實驗室 ①：情境判斷 ══════════════ */
+const SCENES = [
+  { s:"說好玩 30 分鐘，鬧鐘響了就存檔下線。", ok:true,  e:"遵守約定、時間到就停，這是自我管理的好表現。" },
+  { s:"熬夜躲在棉被裡玩手機到凌晨兩點。", ok:false, e:"熬夜影響睡眠與上課精神，是不恰當的使用。" },
+  { s:"用平板查自然課要報告的資料。", ok:true,  e:"查資料學習是網路最好的用途之一。" },
+  { s:"和同學在遊戲裡吵架，罵對方垃圾。", ok:false, e:"網路也要有禮貌，辱罵同學是網路霸凌。" },
+  { s:"先寫完功課，再看 20 分鐘喜歡的影片。", ok:true,  e:"先做事再上網，有限度地使用，非常恰當。" },
+  { s:"把家裡的地址和電話傳給網路上的陌生網友。", ok:false, e:"個資不外流！告訴陌生網友個資非常危險。" },
+  { s:"晚餐時間全家都滑手機，不說話。", ok:false, e:"和家人相處的時間很寶貴，晚餐時放下手機更好。" },
+  { s:"上網查不到資料時，請教爸媽或老師。", ok:true,  e:"懂得求助也是健康使用網路的能力。" },
+];
+let s1i = 0, s1right = 0, s1done = false;
+const s1Text = document.getElementById('s1Text');
+const s1Fb = document.getElementById('s1Fb');
+const s1Prog = document.getElementById('s1Prog');
+function s1Show(){
+  s1done = false;
+  s1Text.textContent = SCENES[s1i].s;
+  s1Fb.className = 'fb'; s1Fb.textContent = '';
+  s1Prog.textContent = '第 ' + (s1i+1) + ' / ' + SCENES.length + ' 題・答對 ' + s1right + ' 題';
+}
+function s1Answer(ans){
+  if (s1done) return;
+  s1done = true;
+  const sc = SCENES[s1i];
+  const right = ans === sc.ok;
+  if (right) s1right++;
+  s1Fb.className = 'fb ' + (right ? 'ok' : 'no');
+  s1Fb.innerHTML = '<b>' + (right ? '✓ 判斷正確' : '✕ 再想一想') + '</b>' + sc.e;
+  s1Prog.textContent = '第 ' + (s1i+1) + ' / ' + SCENES.length + ' 題・答對 ' + s1right + ' 題';
+  setTimeout(() => {
+    if (s1i < SCENES.length - 1){ s1i++; s1Show(); }
+    else {
+      s1Text.textContent = '🎉 完成！你答對 ' + s1right + ' / ' + SCENES.length + ' 題';
+      s1Fb.className = 'fb ok';
+      s1Fb.textContent = s1right >= 6 ? '很棒！你已經能分辨恰當與不恰當的使用。' : '再回到簡報複習一次，你會更有把握。';
+      s1i = 0; s1right = 0;
+      setTimeout(s1Show, 4000);
+    }
+  }, 2600);
+}
+document.getElementById('s1Ok').addEventListener('click', () => s1Answer(true));
+document.getElementById('s1No').addEventListener('click', () => s1Answer(false));
+s1Show();
+
+/* ══════════════ 實驗室 ②：我訊息拼圖 ══════════════ */
+const MORI = [
+  { n:1, t:'事件', txt:'「當你熬夜玩手機……」' },
+  { n:2, t:'感受', txt:'「我很擔心……」' },
+  { n:3, t:'影響', txt:'「因為你上課會沒精神……」' },
+  { n:4, t:'期望', txt:'「我希望你十點前休息。」' },
+];
+let moriStep = 1;
+const moriSlots = [...document.querySelectorAll('#moriSlots .slot')];
+const moriFb = document.getElementById('moriFb');
+function moriShuffle(){
+  const order = [...moriSlots];
+  for (let i = order.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  order.forEach(s => document.getElementById('moriSlots').appendChild(s));
+}
+function moriPaint(){
+  moriSlots.forEach(s => {
+    const item = MORI.find(m => m.n === Number(s.dataset.n));
+    s.textContent = item.n < moriStep ? item.n + '. ' + item.txt : item.n + '. ' + item.t;
+    s.classList.toggle('done', item.n < moriStep);
+  });
+}
+moriSlots.forEach(s => s.addEventListener('click', () => {
+  const n = Number(s.dataset.n);
+  if (n < moriStep) return;
+  if (n === moriStep){
+    moriStep++;
+    moriFb.className = 'fb ok'; moriFb.textContent = '✓ 這是「' + MORI[n-1].t + '」';
+    if (moriStep > 4){
+      moriFb.className = 'fb ok';
+      moriFb.textContent = '🎉 完整的我訊息說完了！不指責對方，把事件、感受、影響、期望說清楚。';
+    }
+  } else {
+    moriFb.className = 'fb no';
+    moriFb.textContent = '✕ 順序不對：先說事件，再說感受，然後影響，最後期望。';
+  }
+  moriPaint();
+}));
+document.getElementById('moriReset').addEventListener('click', () => {
+  moriStep = 1; moriFb.className = 'fb'; moriFb.textContent = '';
+  moriShuffle(); moriPaint();
+});
+moriShuffle(); moriPaint();
+
+/* ══════════════ 素材圖庫 ══════════════ */
+(function(){
+  const grid = document.getElementById('galGrid');
+  const filters = document.getElementById('galFilters');
+  if (!grid || typeof GALLERY === 'undefined') return;
+  function render(g){
+    grid.innerHTML = '';
+    GALLERY.filter(x => g === 'all' || x.group === g).forEach(x => {
+      const a = document.createElement('a');
+      a.href = x.img; a.target = '_blank'; a.rel = 'noopener';
+      a.innerHTML = '<img src="' + x.thumb + '" alt="' + x.title + '" loading="lazy" title="' + x.title + '">';
+      grid.appendChild(a);
+    });
+  }
+  filters.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    [...filters.children].forEach(x => x.classList.toggle('on', x === b));
+    render(b.dataset.g);
+  });
+  render('all');
+})();
+
+/* ══════════════ 對戰 iframe 高度 ══════════════ */
+window.addEventListener('message', (e) => {
+  const frame = document.getElementById('battleFrame');
+  if (!frame || e.source !== frame.contentWindow) return;
+  if (!e.data || e.data.type !== 'battle-height') return;
+  const h = Number(e.data.height);
+  if (Number.isFinite(h)) frame.style.height = Math.max(600, Math.min(1100, Math.round(h))) + 'px';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "historyId": "75f259e0-03bf-4509-8082-fa1bf120e82c",
+  "currentRevision": null,
+  "pendingChanges": false,
+  "files": {
+    "index.html": {
+      "hash": "68f80287b0cc6fda7ed71d955ee1ea3f18fb60ae59a394deb288cfe6e6d80912",
+      "content": "C:\\Users\\rayi\\.cache\\hyperframes\\history\\75f259e0-03bf-4509-8082-fa1bf120e82c\\blobs\\68\\68f80287b0cc6fda7ed71d955ee1ea3f18fb60ae59a394deb288cfe6e6d80912"
+    },
+    "vo.mp3": {
+      "hash": "4408954abc86a1346b6124c4bf44e52de1fc0b08e7a1bdc0a7d01827aab14143",
+      "content": "C:\\Users\\rayi\\.cache\\hyperframes\\history\\75f259e0-03bf-4509-8082-fa1bf120e82c\\blobs\\44\\4408954abc86a1346b6124c4bf44e52de1fc0b08e7a1bdc0a7d01827aab14143"
+    }
+  },
+  "revisions": {},
+  "checks": {
+    "latest": {
+      "revision": null,
+      "id": "001ea4c9-a8f8-408a-ad70-5f5e26edbb05"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "id": "001ea4c9-a8f8-408a-ad70-5f5e26edbb05",
+        "scope": "project",
+        "report": "C:\\Users\\rayi\\Documents\\健康與體育教學專欄\\友誼維繫\\影片\\p09\\.hyperframes\\artifacts\\checks\\001ea4c9-a8f8-408a-ad70-5f5e26edbb05.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 10000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1794293677563,
+        "contentHash": "c74a998d94bfc8325daa2c6f83f7ab8641eb0fc8a32f52220d74875a93299916",
+        "revision": null,
+        "inputFingerprint": "e0b37f699a853c9f8be8a942f0a07b2d9e9a2dfafedc0c130f3d82f2aa983d7b",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "fc8b80a2-ab58-4640-895b-a9442daecf3c",
+      "completedAt": 1794293710493,
+      "output": "C:\\Users\\rayi\\Documents\\健康與體育教學專欄\\友誼維繫\\教學網頁\\media\\p09.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
+}

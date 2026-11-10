@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>p12 轉傳訊息三步驟：停・看・問</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  @font-face { font-family:"Microsoft JhengHei"; src: local("Microsoft JhengHei"); }
+  @font-face { font-family:"PingFang TC"; src: local("PingFang TC"); }
+  body { margin:0; background:#F7F3E9; }
+  #root { position:relative; width:100%; height:100%; overflow:hidden;
+          font-family:"Microsoft JhengHei","PingFang TC",sans-serif; }
+  .clip { position:absolute; inset:0; }
+  .bar { position:absolute; left:0; top:0; width:100%; height:150px;
+        background:#1F6E54; display:flex; align-items:center; padding-left:70px; }
+  .bar h1 { color:#F7F3E9; font-size:64px; margin:0; }
+  .stage { position:absolute; inset:0; }
+  .card { position:absolute; box-sizing:border-box; border-radius:28px; padding:24px 28px;
+          color:#fff; text-align:center; }
+  .card .big { font-size:44px; font-weight:700; }
+  .card .sub { font-size:28px; margin-top:12px; }
+  .card.row { display:flex; align-items:center; gap:30px; text-align:left; }
+  .card.row .num { background:rgba(255,255,255,.25); border-radius:50%; width:88px; height:88px;
+                   display:flex; align-items:center; justify-content:center; font-size:44px; font-weight:700; flex:none; }
+  .card.row .txt { font-size:38px; font-weight:600; }
+  .sub1 { position:absolute; color:#F7F3E9; background:#1F6E54; width:1840px;
+          left:40px; top:930px; height:100px; border-radius:20px;
+          display:flex; align-items:center; justify-content:center;
+          font-size:36px; font-weight:600; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="p12" data-start="0" data-width="1920" data-height="1080" data-duration="15.15">
+  <section class="clip" id="scene" data-start="0" data-duration="15.15">
+    <div class="bar"><h1 id="t">轉傳訊息三步驟：停・看・問</h1></div>
+    <div class="stage" id="stage"><div class="card" id="c0" style="left:150px;top:400px;width:500px;height:260px;background:#1F6E54;"><div class="big">1</div><div class="sub">停：不急著轉傳，先停三秒</div></div><div class="card" id="c1" style="left:703px;top:400px;width:500px;height:260px;background:#E8641B;"><div class="big">2</div><div class="sub">看：來源是誰？有根據嗎？</div></div><div class="card" id="c2" style="left:1256px;top:400px;width:500px;height:260px;background:#8E4413;"><div class="big">3</div><div class="sub">問：查新聞或問大人</div></div></div>
+    <div class="sub1" id="endline">轉傳前先查證，不做假訊息的幫手</div>
+    <audio id="vo" src="vo.mp3" data-start="0"></audio>
+  </section>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.from("#t", { y:-60, opacity:0, duration:0.7, ease:"power3.out" }, 0.2);
+tl.fromTo("#c0", { opacity:0, y:50, scale:0.92 }, { opacity:1, y:0, scale:1, duration:0.6, ease:"back.out(1.6)" }, 1.4);
+tl.fromTo("#c1", { opacity:0, y:50, scale:0.92 }, { opacity:1, y:0, scale:1, duration:0.6, ease:"back.out(1.6)" }, 5.12);
+tl.fromTo("#c2", { opacity:0, y:50, scale:0.92 }, { opacity:1, y:0, scale:1, duration:0.6, ease:"back.out(1.6)" }, 8.83);
+tl.fromTo("#endline", { opacity:0, y:40 }, { opacity:1, y:0, duration:0.6, ease:"power2.out" }, 13.15);
+window.__timelines["p12"] = tl;
+</script>
+</body>
+</html>
